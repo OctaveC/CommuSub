@@ -1,0 +1,47 @@
+<div class="navbar navbar-expand-sm navbar-light">
+  <%= link_to "/", class: "navbar-brand" do %>
+    <span id="logo-text">CommuSub</span>
+    <% end %>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav">
+      <% if user_signed_in? %>
+        <% pending_request = AccountSeat.where(platform_account: current_user.platform_accounts).where(status: 'pending') %>
+        <% if pending_request != [] %>
+        <li class="nav-item">
+          <%= link_to "Pending requests: #{pending_request.count}", profile_path(current_user, tab: "requests"), class: "nav-link" %>
+        </li>
+        <% end %>
+        <li class="nav-item">
+          <%= link_to 'Add an account', construct_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Messages", chatrooms_path(), class: "nav-link" %>
+        </li>
+        <li class="nav-item dropdown">
+          <% if current_user.photo.attached? %>
+            <%= cl_image_tag current_user.photo.key, crop: :fill, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% else %>
+            <%= image_tag "https://i0.wp.com/ahfirstaid.org/wp-content/uploads/2014/07/avatar-placeholder.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% end %>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <%= link_to "My profile", profile_path(current_user), class: "dropdown-item" %>
+            <%= link_to "My personal accounts", profile_path(current_user, tab: "accounts"), class: "dropdown-item" %>
+            <%= link_to "Borrowed accounts", profile_path(current_user, tab: "borrowed_accounts"), class: "dropdown-item" %>
+            <%= link_to "My requests", profile_path(current_user, tab: "requests"), class: "dropdown-item" %>
+            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+          </div>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
