@@ -1,0 +1,25 @@
+.navbar.navbar-expand-sm.navbar-light {
+}
+
+.navbar{
+  align-items: center;
+}
+
+div#navbarSupportedContent {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#logo-text {
+  font-family: Poppins, sans-serif;
+  font-weight: 600;
+  font-size: 1.5em;
+}
+
+a.nav-link {
+    font-family: Poppins, sans-serif;
+}
+
+a.nav-link:hover {
+    text-decoration: underline;
+}
