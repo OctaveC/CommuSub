@@ -80,7 +80,7 @@ reviews_octave.save!
 
 puts "Creating Netflix (1/8)"
 netflix = Platform.new( { category: "vod_streaming", name: "Netflix", max_seats_available: 6, description: "Watch Netflix movies & TV shows online or stream right to your smart TV, game console, PC, Mac, mobile, tablet and more."  } )
-file = URI.open('https://upload.wikimedia.org/wikipedia/commons/0/0f/Logo_Netflix.png')
+file = URI.open('https://logos-marques.com/wp-content/uploads/2021/03/Netflix-logo.png')
 netflix.logo.attach(io: File.open(file), filename: 'netflix-logo.jpg', content_type: 'image/jpg')
 netflix.save!
 
