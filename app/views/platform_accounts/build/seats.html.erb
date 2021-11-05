@@ -1,0 +1,120 @@
+<div class="title-header need-smaller-subscription" id="header-smaller">
+</div>
+
+
+
+<div class="platforms-container" id="container-smaller-subscription">
+  <div class="platform-cards additonal-box-shadow smaller-border-radius" id="card-smaller">
+  <%= cl_image_tag @platform_account.platform.logo.key, width: 150, crop: :fill if @platform_account.platform.logo.attached? %>
+  </div>
+</div>
+
+
+<div class="d-flex justify-content-center align-items-center flex-column h-100" style="min-height: 20vh;">
+  <div class="w-100 negative-margin">
+    <h2 class="text-center">How many CommuSub users should have access to your account?</h2>
+      <%= simple_form_for(@platform_account, method: :put, url: wizard_path) do |f|%>
+        <div class="login-container">
+          <div class="form-inputs login-form">
+            <%= f.input :seats_available, as: :select, collection: 1..SubscriptionType.find_by(id: @platform_account.account_type).seats_total, label: "Select the maximum number of users that should have access to your account at the same time" %>
+          </div>
+          <div class="form-actions btn-login">
+            <%= f.submit value: "Finalize Account"  %>
+          </div>
+        </div>
+      <% end %>
+  </div>
+</div>
+
+<div class="back-button-box">
+  <%= link_to 'Previous', previous_wizard_path, class: "back-button" %>
+</div>
+
+<style>
+
+.back-button-box {
+    text-align: center;
+}
+
+.back-button-box > a:hover {
+    color: #FF4949;
+}
+
+body {
+  background-color: #FFEAEA;
+}
+h1, p {
+  color: white;
+}
+.custom-container {
+  min-height: 90vh;
+}
+
+.negative-margin {
+  margin-top: -150px;
+}
+.platforms-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-top: -10%;
+}
+.platform-cards {
+    flex: 1 0 21%;
+    border: solid 1px #FF4949;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    border-radius: 25px;
+    margin: 1%;
+}
+.platform-cards {
+  background-color: white;
+}
+.platform-cards:hover {
+    transform: scale(1.1);
+    transition-duration: 0.8s;
+}
+
+input#platform_account_seats_available {
+    background-color: white;
+}
+
+input#platform_account_seats_total {
+    background-color: white;
+}
+
+.title-header {
+  padding-top: 5%;
+  background-color: white;
+  border-radius: 0% 0% 40% 40%;
+  padding-bottom: 15%;
+  padding-left: 20%;
+  padding-right: 20%;
+  text-align: center;
+}
+h1 {
+  color: white !important;
+}
+
+input[type="submit"] {
+    border: none;
+}
+
+h2.text-center {
+    margin-top: 17%;
+}
+/* Navbar color */
+a.nav-link {
+    color: #FF4949 !important;
+}
+#logo-text {
+  color: #FF4949;
+}
+.navbar.navbar-expand-sm.navbar-light {
+    background-color: white;
+}
+</style>

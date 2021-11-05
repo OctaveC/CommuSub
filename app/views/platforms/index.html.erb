@@ -1,0 +1,144 @@
+<div class="title-header">
+<h1>Welcome to CommuSub!</h1>
+<h2>Open your account to the community and get access to all member's accounts.</h2>
+</div>
+
+<div class="platforms-container mb-5">
+  <% @platforms.each do |platform|%>
+    <div class="platform-cards">
+      <%= link_to platform_path(platform.id) do %>
+      <%= cl_image_tag platform.logo.key, width: 150, crop: :fill if platform.logo.attached? %>
+    </div>
+   <% end %>
+  <% end %>
+
+</div>
+
+<div class="d-flex justify-content-center mb-4">
+  <h3>How does CommuSub works ?</h3>
+</div>
+
+<br>
+
+<div class="d-flex bou justify-content-center">
+  <div class="list-paragraph mb-4">
+    <p>1. <span class="toto">&nbsp;Join&nbsp;</span>&nbsp;the community</p><br/>
+    <p>2. <span class="toto">&nbsp;Share&nbsp;</span>&nbsp;at least one account</p><br/>
+    <p>3. Get <span class="toto">&nbsp;unlimlited access&nbsp;</span>&nbsp;to community's account</p>
+  </div>
+  <div class="artboard">
+     <%= image_tag "Artboard.png" %>
+  </div>
+</div>
+
+
+<style>
+
+body {
+  background-color: white;
+}
+
+h1, p {
+  color: white;
+}
+
+.custom-container {
+  min-height: 90vh;
+}
+
+.platforms-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-top: -10%;
+    margin-bottom: 10%;
+}
+
+.platform-cards {
+    flex: 1 0 21%;
+    border: solid 1px #FF4949;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    border-radius: 25px;
+    margin: 1%;
+
+}
+
+.platform-cards {
+  background-color: white;
+}
+
+.platform-cards:hover {
+    transform: scale(1.1);
+    transition-duration: 0.8s;
+}
+
+.title-header {
+  padding-top: 10%;
+  background-color: #FF4949;
+  border-radius: 0% 0% 40% 40%;
+  padding-bottom: 15%;
+  padding-left: 20%;
+  padding-right: 20%;
+  text-align: center;
+}
+
+h1 {
+  color: white !important;
+}
+
+/* Navbar color */
+
+a.nav-link {
+    color: white !important;
+}
+
+#logo-text {
+  color: white;
+}
+
+.navbar.navbar-expand-sm.navbar-light {
+    background-color: #FF4949;
+}
+
+.list-paragraph {
+  width: 480px;
+  font-size: x-large;
+}
+
+.list-paragraph p {
+  color: black;
+  margin-bottom: 2px;
+}
+
+.artboard {
+  width: 380px;
+  margin-bottom: 40px;
+}
+
+.artboard img {
+  object-fit: cover;
+  width: 150%;
+  margin-left: 10%;
+  opacity: 0.8;
+}
+
+.toto {
+  background-color: #FF4949;
+  color: white;
+}
+
+.bou {
+  margin-bottom: 32px;
+  /*display: flex !important;*/
+  /*justify-content: flex-around;*/
+  align-items: center;
+  padding-bottom: 10px;
+}
+
+
+</style>

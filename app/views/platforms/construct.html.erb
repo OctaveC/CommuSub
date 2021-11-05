@@ -1,0 +1,81 @@
+<div class="title-header" id="header-smaller">
+<h1 id="header1-smaller">Select a platform:</h1>
+</div>
+
+<div class="platforms-container" id="container-smaller">
+<% @platforms.each do |platform|%>
+  <div class="platform-cards" id="card-small">
+  <%= link_to platform_build_index_path(platform), method: :post do %>
+  <%= cl_image_tag platform.logo.key, width: 150, crop: :fill if platform.logo.attached? %>
+  </div>
+  <% end %>
+<% end %>
+</div>
+
+<style>
+
+body {
+  background-color: white;
+}
+
+h1, h2, p {
+  color: black;
+}
+
+.platforms-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding-left: 10%;
+  padding-right: 10%;
+  margin-top: -5%;
+  margin-bottom: 10%;
+}
+
+.platform-cards {
+  border: solid 1px #FF4949;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+  border-radius: 25px;
+  margin: 1%;
+
+}
+
+.platform-cards {
+  background-color: white;
+}
+
+.platform-cards:hover {
+  transform: scale(1.1);
+  transition-duration: 0.8s;
+}
+
+.title-header {
+  padding-top: 5%;
+  background-color: white;
+  border-radius: 0% 0% 40% 40%;
+  padding-bottom: 15%;
+  padding-left: 20%;
+  padding-right: 20%;
+  text-align: center;
+}
+
+body {
+  background-color: #FFEAEA;
+}
+/* Navbar color */
+
+a.nav-link {
+    color: #FF4949 !important;
+}
+
+#logo-text {
+  color: #FF4949;
+}
+
+.navbar.navbar-expand-sm.navbar-light {
+    background-color: white;
+}
+</style>
